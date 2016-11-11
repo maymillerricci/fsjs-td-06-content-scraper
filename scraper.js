@@ -4,6 +4,7 @@ var fs = require("fs");
 var csv = require("fast-csv");
 
 var rootUrl = "http://www.shirts4mike.com/";
+var now = new Date();
 
 scrapeSiteAndSaveData();
 
@@ -27,7 +28,7 @@ function makeDataDir() {
 
 // path for csv file in data directory with today's date as file name
 function csvPath() {
-  var todayDate = new Date().toISOString().slice(0,10);
+  var todayDate = now.toISOString().slice(0,10);
   return "data/" + todayDate + ".csv";
 }
 
@@ -62,7 +63,8 @@ function scrapeShirtSite(shirtPath, csvStream) {
         Title: title, 
         Price: price, 
         ImageURL: rootUrl + imagePath, 
-        URL: shirtUrl 
+        URL: shirtUrl,
+        Time: now.toISOString().slice(11,19)
       }
 
       csvStream.write(metadata);
