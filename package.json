@@ -2,7 +2,7 @@
   "name": "treehouse-fsjs-content-scraper",
   "version": "1.0.0",
   "description": "Web scraper to scrape content from t-shirt site and output data in CSV format.",
-  "main": "app.js",
+  "main": "scraper.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
