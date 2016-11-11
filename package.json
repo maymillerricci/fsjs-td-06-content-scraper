@@ -1,0 +1,24 @@
+{
+  "name": "treehouse-fsjs-content-scraper",
+  "version": "1.0.0",
+  "description": "Web scraper to scrape content from t-shirt site and output data in CSV format.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "fsjs-06-content-scraper"
+  },
+  "keywords": [
+    "treehouse",
+    "scraper",
+    "csv"
+  ],
+  "author": "May Miller-Ricci",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.78.0"
+  }
+}
