@@ -8,7 +8,7 @@ var now = new Date();
 
 scrapeSiteAndSaveData();
 
-// main function that scrapes the site and saves the data as a csv
+ /** main function that scrapes the site and saves the data as a csv */
 function scrapeSiteAndSaveData() {
   makeDataDir();
 
@@ -19,21 +19,23 @@ function scrapeSiteAndSaveData() {
   scrapeMainSite(csvStream);
 }
 
-// create "data" directory if one doesn't already exist
+/** create "data" directory if one doesn't already exist */
 function makeDataDir() {
   if (!fs.existsSync("data")) {
     fs.mkdirSync("data");
   }
 }
 
-// path for csv file in data directory with today's date as file name
+/** path for csv file in data directory with today's date as file name */
 function csvPath() {
   var todayDate = now.toISOString().slice(0,10);
   return "data/" + todayDate + ".csv";
 }
 
-// visit the main t-shirt site and loop through the t-shirts,
-// visiting each t-shirt's individual site scraping the data from each
+/**
+ * visit the main t-shirt site and loop through the t-shirts,
+ * visiting each t-shirt's individual site scraping the data from each
+*/
 function scrapeMainSite(csvStream) {
   request(rootUrl, function(error, response, html) {
     if (!error && response.statusCode === 200) {
@@ -49,8 +51,10 @@ function scrapeMainSite(csvStream) {
   });
 }
 
-// scrape the data from an individual t-shirt's site
-// and write its data to the csv
+/**
+ * scrape the data from an individual t-shirt's site
+ * and write its data to the csv
+*/
 function scrapeShirtSite(shirtPath, csvStream) {
   var shirtUrl = rootUrl + shirtPath;
 
@@ -76,6 +80,7 @@ function scrapeShirtSite(shirtPath, csvStream) {
   });
 }
 
+/** log error to console and append to error log w/timestamp */
 function handleError(error) {
   var errorMessage = "There was an error visiting the website (" + error.code + ")";
   console.log(errorMessage);
