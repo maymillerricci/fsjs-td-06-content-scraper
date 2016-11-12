@@ -43,6 +43,8 @@ function scrapeMainSite(csvStream) {
 
         scrapeShirtSite(shirtPath, csvStream);
       });
+    } else {
+      handleError(error);
     }
   });
 }
@@ -68,6 +70,14 @@ function scrapeShirtSite(shirtPath, csvStream) {
       }
 
       csvStream.write(metadata);
+    } else {
+      handleError(error);
     }
   });
+}
+
+function handleError(error) {
+  var errorMessage = "There was an error visiting the website (" + error.code + ")";
+  console.log(errorMessage);
+  fs.appendFile("scraper-error.log", errorMessage + " - " + now + "\n");
 }
