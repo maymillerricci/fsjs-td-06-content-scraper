@@ -1,6 +1,24 @@
+/**
+ * use cheerio and request packages for web scraping - chose because:
+   * googling how to scape a site with node led to lots of results that use them
+   * found a tutorial that walked through web scraping with them that i could easily follow:
+     * https://www.digitalocean.com/community/tutorials/how-to-use-node-js-request-and-cheerio-to-set-up-simple-web-scraping
+   * cheerio has had 58 releases, most recent was 3 months ago
+   * request has had 115 releases, most recent was 1 week ago 
+   * cheerio has 1,025 commits, 81 contributors, and 10,273 stars on github
+   * request has 2,108 commits, 265 contributors, and 13,132 stars on github
+ */
 var cheerio = require("cheerio");
 var request = require("request");
 var fs = require("fs");
+/** 
+ * use fast-csv package for writing to csv - chose because:
+   * has had 36 releases, most recent was 2 months ago
+   * 148 commits, 26 contributors, and 304 stars on github
+   * docs were clear and had example i could follow to write to csv
+   * investigated the csv package too which is more popular 
+     * but it wasn't immediately clear to me how to use it for what i wanted
+ */
 var csv = require("fast-csv");
 
 var rootUrl = "http://www.shirts4mike.com/";
@@ -35,7 +53,7 @@ function csvPath() {
 /**
  * visit the main t-shirt site and loop through the t-shirts,
  * visiting each t-shirt's individual site scraping the data from each
-*/
+ */
 function scrapeMainSite(csvStream) {
   request(rootUrl, function(error, response, html) {
     if (!error && response.statusCode === 200) {
@@ -54,7 +72,7 @@ function scrapeMainSite(csvStream) {
 /**
  * scrape the data from an individual t-shirt's site
  * and write its data to the csv
-*/
+ */
 function scrapeShirtSite(shirtPath, csvStream) {
   var shirtUrl = rootUrl + shirtPath;
 
