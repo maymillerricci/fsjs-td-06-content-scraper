@@ -58,7 +58,7 @@ function scrapeMainSite(csvStream) {
   request(rootUrl, function(error, response, html) {
     if (!error && response.statusCode === 200) {
       var $ = cheerio.load(html);
-      $(".products li a").each(function(i, element) {
+      $(".products li a").each(function() {
         var shirtPath = $(this).attr("href");
 
         scrapeShirtSite(shirtPath, csvStream);
@@ -89,7 +89,7 @@ function scrapeShirtSite(shirtPath, csvStream) {
         ImageURL: rootUrl + imagePath, 
         URL: shirtUrl,
         Time: now.toISOString().slice(11,19)
-      }
+      };
 
       csvStream.write(metadata);
     } else {

@@ -4,7 +4,8 @@
   "description": "Web scraper to scrape content from t-shirt site and output data in CSV format.",
   "main": "scraper.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint scraper.js --ignore-path .gitignore --ignore-pattern internals/scripts || true"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "cheerio": "^0.22.0",
     "fast-csv": "^2.3.0",
     "request": "^2.78.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.0"
   }
 }
